@@ -5,7 +5,17 @@ import connectDB from './db/database.js'
 
 dotenv.config({path:'./env'})
 connectDB()
-
+//after async gets called it return a promise
+//so then for true and catch for error
+.then(()=>{
+    application.listen(process.env.PORT || 8000,()=>{
+        console.log(`Server is running at port: ${process.env.PORT}`)
+    })
+})
+.catch((error)=>{
+    console.log("MongoDB connection failed: ",error)
+}
+)
 
 
 
